@@ -1,6 +1,6 @@
 {
   "name": "kiotviet-client-sdk",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "description": "Node.js SDK for KiotViet Retail Public API with automatic token management and TypeScript support",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -45,7 +45,6 @@
     "node": ">=14.0.0"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.4",
     "@types/node": "^20.17.30",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
@@ -55,5 +54,8 @@
     "prettier": "^3.5.3",
     "typedoc": "^0.28.1",
     "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "axios": "^1.16.1"
   }
 }
