@@ -1,5 +1,5 @@
 {
-  "name": "kiotviet-client-sdk",
+  "name": "@tuandaodev/kiotviet-client-sdk",
   "version": "0.4.0",
   "description": "Node.js SDK for KiotViet Retail Public API with automatic token management and TypeScript support",
   "main": "dist/index.js",
