@@ -23,6 +23,8 @@ export { UserHandler } from './resources/users';
 export { VouchersHandler } from './resources/vouchers';
 export { WebhookHandler } from './resources/webhooks';
 export { OrderSuppliersHandler } from './resources/order-suppliers';
+export { LocationHandler } from './resources/locations';
+export { CouponHandler } from './resources/coupons';
 
 // Export types
 export {

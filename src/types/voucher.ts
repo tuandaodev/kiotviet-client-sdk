@@ -1,13 +1,5 @@
 import { KiotVietListResponse } from './common';
 
-export interface VoucherProduct {
-  productId: number;
-  productCode: string;
-  productName: string;
-  quantity: number;
-  isReward: boolean;
-}
-
 export interface VoucherCampaign {
   id: number;
   code: string;
@@ -34,7 +26,6 @@ export interface VoucherCampaign {
   remainingQuantity: number;
   isAutoGenerate: boolean;
   isUnlimited: boolean;
-  voucherProducts?: VoucherProduct[];
 }
 
 export interface Voucher {
@@ -62,63 +53,46 @@ export interface Voucher {
 }
 
 export interface VoucherCampaignListParams {
-  status?: number[];
-  keyword?: string;
-  fromDate?: string;
-  toDate?: string;
-  pageSize?: number;
-  currentItem?: number;
-  orderBy?: string;
-  orderDirection?: 'ASC' | 'DESC';
+  includeVoucherBranchs?: boolean;
+  includeVoucherUsers?: boolean;
+  isActive?: boolean;
+  id?: number;
+  isGlobal?: boolean;
+  forAllCusGroup?: boolean;
+  forAllUser?: boolean;
 }
 
 export interface VoucherListParams {
-  campaignId?: number;
-  status?: number[];
-  keyword?: string;
-  fromDate?: string;
-  toDate?: string;
-  pageSize?: number;
-  currentItem?: number;
-  orderBy?: string;
-  orderDirection?: 'ASC' | 'DESC';
+  campaignId: number;
+  status?: number;
+  lastModifiedFrom: string;
+  code?: string;
 }
 
-export interface VoucherCampaignCreateParams {
-  code: string;
-  name: string;
-  description?: string;
-  startDate: string;
-  endDate: string;
-  branchId: number;
-  branchIds?: number[];
-  customerGroupIds?: number[];
-  discountType: number;
-  discountValue: number;
-  minOrderValue?: number;
-  maxDiscountValue?: number;
-  quantity: number;
-  isAutoGenerate: boolean;
-  isUnlimited: boolean;
-  voucherProducts?: VoucherProduct[];
+export interface VoucherCodeData {
+  code?: string;
+  Code?: string;
 }
 
-export interface VoucherCampaignUpdateParams extends Partial<VoucherCampaignCreateParams> {
-  id: number;
+export interface VoucherCreateParams {
+  voucherCampaignId: number;
+  data: VoucherCodeData[];
+}
+
+export interface VoucherReleaseParams {
+  CampaignId: number;
+  Vouchers: VoucherCodeData[];
+  ReleaseDate: string;
+}
+
+export interface VoucherCancelParams {
+  CampaignId: number;
+  Vouchers: VoucherCodeData[];
 }
 
 export interface VoucherListResponse extends KiotVietListResponse<Voucher> {}
-
 export interface VoucherCampaignListResponse extends KiotVietListResponse<VoucherCampaign> {}
 
-export enum VoucherStatus {
-  Active = 1,
-  Inactive = 0,
-  Used = 2,
-  Expired = 3,
-}
-
-export enum VoucherDiscountType {
-  FixedAmount = 1,
-  Percentage = 2,
+export interface VoucherActionResponse {
+  message: string;
 }

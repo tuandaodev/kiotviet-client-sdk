@@ -4,44 +4,47 @@ import {
   VoucherListResponse,
   VoucherCampaignListParams,
   VoucherCampaignListResponse,
-  VoucherCampaign,
-  VoucherCampaignCreateParams,
-  VoucherCampaignUpdateParams,
-  Voucher,
+  VoucherCreateParams,
+  VoucherReleaseParams,
+  VoucherCancelParams,
+  VoucherActionResponse,
 } from '../types/voucher';
 
 export class VouchersHandler {
   constructor(private client: KiotVietClient) {}
 
+  /**
+   * Lấy danh sách đợt phát hành voucher
+   */
   async listCampaigns(params?: VoucherCampaignListParams): Promise<VoucherCampaignListResponse> {
-    return this.client.get('/vouchers/campaigns', { params });
+    return this.client.get('/vouchercampaign', { params });
   }
 
-  async getCampaign(id: number): Promise<VoucherCampaign> {
-    return this.client.get(`/vouchers/campaigns/${id}`);
+  /**
+   * Lấy danh sách voucher trong đợt phát hành
+   */
+  async list(params: VoucherListParams): Promise<VoucherListResponse> {
+    return this.client.get('/voucher', { params });
   }
 
-  async createCampaign(data: VoucherCampaignCreateParams): Promise<VoucherCampaign> {
-    return this.client.post('/vouchers/campaigns', data);
+  /**
+   * Tạo mới voucher
+   */
+  async create(data: VoucherCreateParams): Promise<VoucherActionResponse> {
+    return this.client.post('/voucher', data);
   }
 
-  async updateCampaign(data: VoucherCampaignUpdateParams): Promise<VoucherCampaign> {
-    return this.client.put(`/vouchers/campaigns/${data.id}`, data);
+  /**
+   * Phát hành voucher (Give)
+   */
+  async releaseGive(data: VoucherReleaseParams): Promise<VoucherActionResponse> {
+    return this.client.post('/voucher/release/give', data);
   }
 
-  async deleteCampaign(id: number): Promise<void> {
-    return this.client.delete(`/vouchers/campaigns/${id}`);
-  }
-
-  async list(params?: VoucherListParams): Promise<VoucherListResponse> {
-    return this.client.get('/vouchers', { params });
-  }
-
-  async get(id: number): Promise<Voucher> {
-    return this.client.get(`/vouchers/${id}`);
-  }
-
-  async getByCode(code: string): Promise<Voucher> {
-    return this.client.get(`/vouchers/code/${code}`);
+  /**
+   * Hủy voucher
+   */
+  async cancel(data: VoucherCancelParams): Promise<VoucherActionResponse> {
+    return this.client.delete('/voucher/cancel', { data });
   }
 }

@@ -15,7 +15,7 @@ export class SurchargeHandler {
    * @param params Filter and pagination parameters
    */
   async list(params: SurchargeListParams = {}): Promise<SurchargeListResponse> {
-    const response = await this.client.apiClient.get<SurchargeListResponse>('/surcharges', { params });
+    const response = await this.client.apiClient.get<SurchargeListResponse>('/surchages', { params });
     return response.data;
   }
 
@@ -33,7 +33,7 @@ export class SurchargeHandler {
    * @param surchargeData The surcharge data to create
    */
   async create(surchargeData: SurchargeCreateParams): Promise<Surcharge> {
-    const response = await this.client.apiClient.post<Surcharge>('/surcharges', surchargeData);
+    const response = await this.client.apiClient.post<Surcharge>('/surchages', surchargeData);
     return response.data;
   }
 

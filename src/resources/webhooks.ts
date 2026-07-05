@@ -9,23 +9,11 @@ import {
   WebhookPayload,
   WebhookEvent,
   TypedWebhookPayload,
-  WebhookEventDataMap,
 } from '../types/webhook';
 import {
   CustomerUpdateWebhookPayload,
   ProductUpdateWebhookPayload,
-  ProductDeleteWebhookPayload,
-  StockUpdateWebhookPayload,
   OrderUpdateWebhookPayload,
-  InvoiceUpdateWebhookPayload,
-  CategoryUpdateWebhookPayload,
-  CategoryDeleteWebhookPayload,
-  BranchUpdateWebhookPayload,
-  BranchDeleteWebhookPayload,
-  PriceBookUpdateWebhookPayload,
-  PriceBookDeleteWebhookPayload,
-  PriceBookDetailUpdateWebhookPayload,
-  PriceBookDetailDeleteWebhookPayload,
 } from '../types/webhook-payloads';
 
 export class WebhookHandler {

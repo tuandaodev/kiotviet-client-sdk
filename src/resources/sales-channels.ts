@@ -9,6 +9,6 @@ export class SalesChannelsHandler {
    * @returns SalesChannelListResponse
    */
   async list(): Promise<SalesChannelListResponse> {
-    return this.client.get('/salesChannels');
+    return this.client.get('/salechannel');
   }
 }

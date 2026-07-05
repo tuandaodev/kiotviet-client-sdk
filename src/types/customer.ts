@@ -76,3 +76,22 @@ export interface CustomerGroupDetails {
   customerId: number;
   groupId: number;
 }
+
+export interface CustomerGroup {
+  id: number;
+  name: string;
+  description?: string;
+  createdDate: string;
+  createdBy: number;
+  retailerId: number;
+  discount?: number;
+  customerGroupDetails?: CustomerGroupDetails[];
+}
+
+export interface CustomerCreateListParams {
+  listCustomers: CustomerCreateParams[];
+}
+
+export interface CustomerUpdateListParams {
+  listCustomers: CustomerUpdateParams[];
+}

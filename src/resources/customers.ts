@@ -1,5 +1,12 @@
 import { KiotVietClient } from '../client';
-import { KiotVietListResponse, CustomerCreateParams, CustomerUpdateParams } from '../types';
+import {
+  KiotVietListResponse,
+  CustomerCreateParams,
+  CustomerUpdateParams,
+  CustomerGroup,
+  CustomerCreateListParams,
+  CustomerUpdateListParams,
+} from '../types';
 import { ValidationError } from '../errors';
 import { Customer } from '../types';
 
@@ -107,5 +114,34 @@ export class CustomerHandler {
    */
   async delete(customerId: number): Promise<void> {
     await this.client.apiClient.delete(`/customers/${customerId}`);
+  }
+
+  /**
+   * List customer groups
+   * Documentation: GET /customers/group
+   */
+  async listGroups(): Promise<KiotVietListResponse<CustomerGroup>> {
+    const response = await this.client.apiClient.get<KiotVietListResponse<CustomerGroup>>('/customers/group');
+    return response.data;
+  }
+
+  /**
+   * Create a list of customers
+   * @param data List of customers to create
+   * Documentation: POST /listaddcutomers
+   */
+  async createList(data: CustomerCreateListParams): Promise<{ message: string }> {
+    const response = await this.client.apiClient.post<{ message: string }>('/listaddcutomers', data);
+    return response.data;
+  }
+
+  /**
+   * Update a list of customers
+   * @param data List of customers to update
+   * Documentation: PUT /listupdatecustomers
+   */
+  async updateList(data: CustomerUpdateListParams): Promise<{ message: string }> {
+    const response = await this.client.apiClient.put<{ message: string }>('/listupdatecustomers', data);
+    return response.data;
   }
 }

@@ -23,3 +23,5 @@ export * from './order-supplier';
 export * from './trademark';
 export * from './sales-channel';
 export * from './setting';
+export * from './location';
+export * from './coupon';
